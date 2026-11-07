@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audit Meta Ads — Maison Verde (Démo)</title>
+  <meta name="description" content="Audit Meta Ads de niveau agence senior — démo Maison Verde générée par le skill audit-meta de Node it.">
+
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <link rel="stylesheet" href="../../assets/css/main.css?v=3">
+
+  <!-- ============ BRAND ============
+       brand.js définit window.BRAND_INPUT (couleurs + logo + typo + footer).
+       brand-loader.js injecte les CSS vars, le logo, et expose window.BRAND
+       pour les exports PDF/PPT.
+       Pour white-label : remplacer brand.js par celui généré depuis
+       brand/<votre-theme>.json par le sous-agent Designer.
+  -->
+  <script src="brand.js?v=3"></script>
+  <script src="../../assets/js/brand-loader.js?v=3"></script>
+
+  <!-- Chart.js + date adapter -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+  <!-- Export — html2canvas-pro supporte color-mix(), oklch(), rgb modernes -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas-pro@1.5.8/dist/html2canvas-pro.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+
+  <!-- ============ SVG Sprite ============ -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-setup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 10 6-10 6L2 8l10-6Z"/><path d="m2 17 10 6 10-6"/><path d="m2 12 10 6 10-6"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 4-4 4 4 5-5"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+    <symbol id="i-fire" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 21a7 7 0 0 1-7-7c0-2.6 1.5-4.7 3-6.4.5-.5 1-1 1-1.6 0-.4-.2-.5-.5-.5C8 5.5 4 9 4 14a8 8 0 0 0 16 0c0-3.2-1.8-5-3.5-6.5-.4-.4-.5-.6-.5-.8 0-.5.4-.7.7-.7C18.6 6 21 9 21 14a7 7 0 0 1-7 7"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+    <symbol id="i-warn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12" y2="17.01"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h8l-1 8 10-12h-8l1-8Z"/></symbol>
+    <symbol id="i-tune" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+    <symbol id="i-xls" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="m9 14 6 6M15 14l-6 6"/></symbol>
+  </svg>
+
+  <!-- ============ Bandeau démo fictive ============ -->
+  <div class="demo-banner no-print" role="note">
+    <strong>🛡️ Démo fictive.</strong> Maison Verde est une enseigne placeholder.
+    Toutes les données affichées sont générées synthétiquement. Toute ressemblance
+    avec une enseigne réelle est fortuite.
+  </div>
+
+  <!-- ============ Header (sans logo) ============ -->
+  <header class="header">
+    <div class="header__title">
+      <span class="header__chip" id="h-mode">Audit de compte</span>
+      <strong id="h-account">Audit Meta Ads</strong>
+      <span id="h-range">—</span>
+    </div>
+    <div class="header__actions no-print">
+      <button class="btn btn--ghost" id="export-pptx"><svg class="icon"><use href="#i-download"/></svg> PPTX</button>
+      <button class="btn btn--primary" id="export-pdf"><svg class="icon"><use href="#i-download"/></svg> PDF</button>
+    </div>
+  </header>
+
+  <main class="app">
+
+    <!-- ============ Tabs nav ============ -->
+    <div class="tabs no-print" role="tablist" aria-label="Onglets du rapport">
+      <button class="tab" role="tab" data-target="panel-global" aria-selected="true" tabindex="0"><svg class="icon"><use href="#i-globe"/></svg> Vue globale</button>
+      <button class="tab" role="tab" data-target="panel-adsets" aria-selected="false" tabindex="0"><svg class="icon"><use href="#i-layers"/></svg> Ad sets</button>
+      <button class="tab" role="tab" data-target="panel-creatives" aria-selected="false" tabindex="0"><svg class="icon"><use href="#i-image"/></svg> Créas</button>
+      <button class="tab" role="tab" data-target="panel-benchmark" aria-selected="false" tabindex="0"><svg class="icon"><use href="#i-chart"/></svg> Benchmark</button>
+      <button class="tab" role="tab" data-target="panel-reco" aria-selected="false" tabindex="0"><svg class="icon"><use href="#i-spark"/></svg> Recommandations</button>
+    </div>
+
+    <!-- ============ Panel : Vue globale ============ -->
+    <section class="tabpanel" id="panel-global" role="tabpanel" data-active="true">
+      <div class="section-head">
+        <div>
+          <h2><svg class="icon"><use href="#i-globe"/></svg> Vue globale</h2>
+          <p class="section-head__sub" id="global-summary"></p>
+        </div>
+      </div>
+
+      <div id="global-tag-bar" class="no-print"></div>
+      <div class="kpi-grid" id="kpi-grid"></div>
+
+      <div class="chart-card">
+        <div class="chart-card__head">
+          <div>
+            <div class="chart-card__title">Évolution des indicateurs (en cumulé)</div>
+            <div class="chart-card__sub">CPM et CPC sont calculés à chaque date sur le <strong>cumul depuis le début de la période</strong> (spend cumul / impressions cumul × 1000). Survolez pour voir les valeurs · cliquez sur une série pour la masquer.</div>
+          </div>
+          <div class="gran-toggle no-print" id="perf-gran" role="group" aria-label="Granularité">
+            <button data-gran="daily" aria-pressed="false">Jour</button>
+            <button data-gran="weekly" aria-pressed="true">Semaine</button>
+            <button data-gran="monthly" aria-pressed="false">Mois</button>
+          </div>
+        </div>
+        <div class="chart-legend" id="perf-legend">
+          <button class="legend-pill" data-key="spend" data-active="true"><span class="legend-pill__swatch" style="background: var(--series-1)"></span> Invest. cumulé (€)</button>
+          <button class="legend-pill" data-key="cpm" data-active="true"><span class="legend-pill__swatch" style="background: var(--series-2)"></span> CPM cumulé</button>
+          <button class="legend-pill" data-key="cpc" data-active="true"><span class="legend-pill__swatch" style="background: var(--series-3)"></span> CPC cumulé</button>
+          <button class="legend-pill" data-key="frequency" data-active="false"><span class="legend-pill__swatch" style="background: var(--series-5)"></span> Fréquence</button>
+        </div>
+        <div class="chart-card__body" style="margin-top: 16px;">
+          <canvas id="perf-chart"></canvas>
+        </div>
+      </div>
+
+      <div class="section-head" style="margin-top: 32px;">
+        <div>
+          <h3>Signaux détectés</h3>
+          <p class="section-head__sub">Ce que votre data dit — classé par sévérité.</p>
+        </div>
+      </div>
+      <div class="signal-list" id="signal-list"></div>
+
+      <div class="table-wrap table-block" style="margin-top: 32px;">
+        <div class="table-wrap__head">
+          <div class="table-wrap__title">Performance par campagne</div>
+          <div class="table-wrap__actions no-print">
+            <button class="btn btn--ghost btn--small export-xls-btn"><svg class="icon"><use href="#i-xls"/></svg> Excel</button>
+            <button class="btn btn--ghost btn--small toolbox-btn"><svg class="icon"><use href="#i-tune"/></svg> Colonnes</button>
+            <div class="toolbox-panel" data-open="false"></div>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table class="data" id="camp-table">
+            <thead></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Panel : Ad sets ============ -->
+    <section class="tabpanel" id="panel-adsets" role="tabpanel" data-active="false">
+      <div class="section-head">
+        <div>
+          <h2><svg class="icon"><use href="#i-layers"/></svg> Vue par ad set</h2>
+          <p class="section-head__sub" id="adsets-summary"></p>
+        </div>
+      </div>
+
+      <div id="adsets-tag-bar" class="no-print"></div>
+      <div class="signal-list" id="adsets-overlap" style="margin-bottom: 24px;"></div>
+
+      <div class="table-wrap table-block">
+        <div class="table-wrap__head">
+          <div class="table-wrap__title">Performance par ad set (audience + optimisation)</div>
+          <div class="table-wrap__actions no-print">
+            <select id="adsets-camp-filter" class="filter-select" aria-label="Filtrer par campagne"></select>
+            <button class="btn btn--ghost btn--small export-xls-btn"><svg class="icon"><use href="#i-xls"/></svg> Excel</button>
+            <button class="btn btn--ghost btn--small toolbox-btn"><svg class="icon"><use href="#i-tune"/></svg> Colonnes</button>
+            <div class="toolbox-panel" data-open="false"></div>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table class="data" id="adsets-table">
+            <thead></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Panel : Créas ============ -->
+    <section class="tabpanel" id="panel-creatives" role="tabpanel" data-active="false">
+      <div class="section-head">
+        <div>
+          <h2><svg class="icon"><use href="#i-image"/></svg> Vue par créa</h2>
+          <p class="section-head__sub" id="creatives-summary"></p>
+        </div>
+      </div>
+
+      <div id="creatives-tag-bar" class="no-print"></div>
+      <div class="creatives-layout">
+        <div>
+          <h3 class="block-title">Top performers</h3>
+          <div class="creative-grid" id="creatives-top"></div>
+        </div>
+        <div class="chart-card chart-card--inline">
+          <div class="chart-card__title">Répartition du spend par format</div>
+          <div class="chart-card__body" style="height: 280px;">
+            <canvas id="format-donut"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="block-title">Alertes fatigue créa</h3>
+      <div class="creative-grid" id="creatives-fatigue" style="margin-bottom: 28px;"></div>
+
+      <h3 class="block-title">Patterns créa détectés</h3>
+      <div class="signal-list" id="hooks-list" style="margin-bottom: 32px;"></div>
+
+      <div class="table-wrap table-block">
+        <div class="table-wrap__head">
+          <div class="table-wrap__title">Performance par créa (tri, filtres, colonnes paramétrables)</div>
+          <div class="table-wrap__actions no-print">
+            <select id="creatives-camp-filter" class="filter-select" aria-label="Filtrer par campagne"></select>
+            <select id="creatives-adset-filter" class="filter-select" aria-label="Filtrer par ad set"></select>
+            <select id="creatives-format-filter" class="filter-select" aria-label="Filtrer par format">
+              <option value="">Tous formats</option>
+              <option value="video">Vidéo / Reel</option>
+              <option value="image">Image</option>
+              <option value="carousel">Carrousel</option>
+            </select>
+            <button class="btn btn--ghost btn--small export-xls-btn"><svg class="icon"><use href="#i-xls"/></svg> Excel</button>
+            <button class="btn btn--ghost btn--small toolbox-btn"><svg class="icon"><use href="#i-tune"/></svg> Colonnes</button>
+            <div class="toolbox-panel" data-open="false"></div>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table class="data" id="creatives-table">
+            <thead></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Panel : Benchmark ============ -->
+    <section class="tabpanel" id="panel-benchmark" role="tabpanel" data-active="false">
+      <div class="section-head">
+        <div>
+          <h2><svg class="icon"><use href="#i-chart"/></svg> Benchmark sectoriel</h2>
+          <p class="section-head__sub" id="bench-summary"></p>
+        </div>
+      </div>
+
+      <div class="card card--soft bench-context">
+        <div class="bench-context__item">
+          <div class="bench-context__label">Secteur détecté</div>
+          <div class="bench-context__value"><code id="bench-sector"></code></div>
+        </div>
+        <div class="bench-context__item">
+          <div class="bench-context__label">Confiance</div>
+          <div class="bench-context__value"><span id="bench-confidence"></span></div>
+        </div>
+        <div class="bench-context__hint">
+          Médiane, percentiles 25 et 75 du secteur. <strong>Le marqueur "Vous êtes ici"</strong> indique votre position sur l'échelle.
+        </div>
+      </div>
+
+      <div class="bench-list" id="bench-list"></div>
+    </section>
+
+    <!-- ============ Panel : Recommandations ============ -->
+    <section class="tabpanel" id="panel-reco" role="tabpanel" data-active="false">
+      <div class="section-head">
+        <div>
+          <h2><svg class="icon"><use href="#i-spark"/></svg> Recommandations</h2>
+          <p class="section-head__sub">Top 5 signaux opérationnels + plan d'actions priorisé.</p>
+        </div>
+      </div>
+
+      <h3 class="block-title">Top 5 signaux</h3>
+      <div class="signal-list" id="top-signals" style="margin-bottom: 32px;"></div>
+
+      <div class="reco-layout">
+        <div>
+          <h3 class="block-title">Plan d'actions</h3>
+          <div class="reco-grid" id="reco-grid"></div>
+        </div>
+        <div class="chart-card chart-card--inline reco-side">
+          <div class="chart-card__title">Priorisation Impact × Effort</div>
+          <div class="chart-card__sub">En haut à droite = top priorité.</div>
+          <div class="chart-card__body" style="height: 280px; margin-top: 12px;">
+            <canvas id="priority-matrix"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card--accent" style="margin-top: 28px;">
+        <h3 style="margin-bottom: 10px;">Synthèse exécutive</h3>
+        <p id="closing-statement" style="font-size: 1.02rem; line-height: 1.6;"></p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span data-brand="footer">Rapport généré par <strong>Node it</strong></span>
+      <a data-brand="website" href="https://www.nodeit.fr">nodeit.fr</a>
+    </footer>
+
+  </main>
+
+  <!-- ============ Data ============ -->
+  <script src="data.js?v=3"></script>
+  <script src="insights.js?v=3"></script>
+  <script src="benchmark.js?v=3"></script>
+  <script src="recommendations.js?v=3"></script>
+
+  <!-- ============ App ============ -->
+  <script src="../../assets/js/charts.js?v=3"></script>
+  <script src="../../assets/js/app.js?v=3"></script>
+  <script src="../../assets/js/export.js?v=3"></script>
+
+</body>
+</html>

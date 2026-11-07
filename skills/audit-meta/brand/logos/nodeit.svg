@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" aria-label="Node it logo">
+  <rect x="2" y="2" width="28" height="28" rx="7" fill="currentColor"/>
+  <path d="M9 22V10h2.4l5.1 7.3V10H19v12h-2.4l-5.1-7.3V22H9Z" fill="#FFFFFF"/>
+  <circle cx="23.5" cy="11.5" r="1.7" fill="#10B981"/>
+</svg>

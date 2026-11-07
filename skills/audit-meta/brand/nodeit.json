@@ -1,0 +1,59 @@
+{
+  "name": "Node it",
+  "tagline": "Organisme de formation en IA certifié Qualiopi",
+  "website": "https://www.nodeit.fr",
+  "contact_email": "hello@nodeit.fr",
+  "footer_html": "Rapport généré par <strong>Node it</strong> · <a href=\"https://www.nodeit.fr\">nodeit.fr</a>",
+
+  "logo": {
+    "file": "logos/nodeit.svg",
+    "width": 32,
+    "height": 32
+  },
+
+  "colors": {
+    "primary": "#5B5FEF",
+    "primary-dark": "#4338CA",
+    "primary-soft": "#EEF0FF",
+    "accent": "#10B981",
+    "bg": "#FFFFFF",
+    "surface": "#FAFAFB",
+    "surface-2": "#F4F4F7",
+    "border": "#E5E7EB",
+    "text": "#0F172A",
+    "text-muted": "#64748B",
+    "text-on-primary": "#FFFFFF",
+
+    "dataviz": {
+      "series-1": "#5B5FEF",
+      "series-2": "#10B981",
+      "series-3": "#F59E0B",
+      "series-4": "#EC4899",
+      "series-5": "#8B5CF6",
+      "series-6": "#06B6D4",
+      "series-7": "#EF4444"
+    },
+
+    "severity": {
+      "sev-info": "#06B6D4",
+      "sev-medium": "#F59E0B",
+      "sev-high": "#EF4444",
+      "sev-critical": "#B91C1C",
+      "sev-success": "#10B981"
+    }
+  },
+
+  "typography": {
+    "display": "'Inter Display', 'Inter', system-ui, -apple-system, sans-serif",
+    "body": "'Inter', system-ui, -apple-system, sans-serif",
+    "mono": "'JetBrains Mono', 'SF Mono', Menlo, monospace",
+    "pdf_font": "helvetica",
+    "pptx_font": "Inter"
+  },
+
+  "radius": {
+    "sm": "6px",
+    "md": "12px",
+    "lg": "20px"
+  }
+}

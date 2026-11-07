@@ -1,0 +1,124 @@
+{
+  "version": "1.0.0",
+  "description": "Taxonomie sectorielle utilisée par benchmark-researcher pour détecter le secteur de l'annonceur. À étendre au fil des audits.",
+
+  "sectors": [
+    {
+      "sector_key": "retail-grocery-fr",
+      "display_name": "Retail / Épicerie (FR)",
+      "keywords": ["grocery", "drive", "supermarché", "magasin", "coopérative", "courses", "alimentaire", "frais"],
+      "url_patterns": ["magasins-u.com", "carrefour.fr", "leclerc", "intermarche", "auchan", "monoprix", "casino.fr"],
+      "benchmark_file": "retail-grocery-fr.json"
+    },
+    {
+      "sector_key": "retail-fashion-fr",
+      "display_name": "Retail / Mode (FR)",
+      "keywords": ["mode", "fashion", "vêtement", "clothing", "boutique", "collection"],
+      "url_patterns": ["zara", "h&m", "uniqlo", "kiabi", "lacoste", "sandro", "maje", "celio"],
+      "benchmark_file": null,
+      "fallback_to": "retail-generic"
+    },
+    {
+      "sector_key": "retail-beauty-fr",
+      "display_name": "Retail / Beauté (FR)",
+      "keywords": ["beauty", "cosmétique", "parfumerie", "skincare", "maquillage"],
+      "url_patterns": ["sephora", "nocibe", "marionnaud", "yves-rocher", "loccitane"],
+      "benchmark_file": null,
+      "fallback_to": "retail-generic"
+    },
+    {
+      "sector_key": "dtc-ecommerce-fr",
+      "display_name": "DTC E-commerce (FR)",
+      "keywords": ["ecommerce", "shop", "boutique en ligne", "panier", "achat en ligne"],
+      "url_patterns": [],
+      "benchmark_file": null
+    },
+    {
+      "sector_key": "saas-b2b",
+      "display_name": "SaaS B2B",
+      "keywords": ["saas", "platform", "software", "logiciel professionnel", "outil entreprise"],
+      "url_patterns": [],
+      "benchmark_file": null
+    },
+    {
+      "sector_key": "saas-b2c",
+      "display_name": "SaaS B2C",
+      "keywords": ["app", "abonnement", "subscription", "mobile app"],
+      "url_patterns": [],
+      "benchmark_file": null
+    },
+    {
+      "sector_key": "marketplace",
+      "display_name": "Marketplace",
+      "keywords": ["marketplace", "annonces", "petites annonces", "vendeurs"],
+      "url_patterns": ["leboncoin", "vinted", "etsy"],
+      "benchmark_file": null
+    },
+    {
+      "sector_key": "travel-leisure",
+      "display_name": "Voyage / Loisirs",
+      "keywords": ["voyage", "hôtel", "réservation", "vacances", "séjour", "vol"],
+      "url_patterns": ["booking.com", "airbnb", "expedia", "trivago"],
+      "benchmark_file": null
+    },
+    {
+      "sector_key": "restaurant-qsr",
+      "display_name": "Restauration / QSR",
+      "keywords": ["restaurant", "livraison repas", "fast food", "burger", "pizza"],
+      "url_patterns": ["mcdonalds", "burger king", "kfc", "subway", "ubereats", "deliveroo"],
+      "benchmark_file": null
+    },
+    {
+      "sector_key": "education-fr",
+      "display_name": "Éducation / Formation (FR)",
+      "keywords": ["formation", "école", "diplôme", "cours", "certification", "apprenants", "qualiopi"],
+      "url_patterns": [],
+      "benchmark_file": null
+    },
+    {
+      "sector_key": "finance-banking",
+      "display_name": "Finance / Banque",
+      "keywords": ["banque", "compte bancaire", "épargne", "investissement", "crédit", "assurance"],
+      "url_patterns": ["bnpparibas", "credit agricole", "societe generale", "boursorama", "qonto"],
+      "benchmark_file": null
+    },
+    {
+      "sector_key": "real-estate-fr",
+      "display_name": "Immobilier (FR)",
+      "keywords": ["immobilier", "achat appartement", "location", "maison", "vente", "agence immo"],
+      "url_patterns": ["seloger", "leboncoin", "logic-immo", "bienici"],
+      "benchmark_file": null
+    },
+    {
+      "sector_key": "automotive",
+      "display_name": "Automobile",
+      "keywords": ["voiture", "véhicule", "concession", "constructeur auto"],
+      "url_patterns": ["renault", "peugeot", "citroen", "tesla", "bmw", "audi"],
+      "benchmark_file": null
+    },
+    {
+      "sector_key": "healthcare",
+      "display_name": "Santé",
+      "keywords": ["santé", "médical", "pharmacie", "clinique", "patient"],
+      "url_patterns": [],
+      "benchmark_file": null
+    },
+    {
+      "sector_key": "retail-generic",
+      "display_name": "Retail (générique)",
+      "keywords": ["retail", "vente", "shop"],
+      "url_patterns": [],
+      "benchmark_file": null,
+      "is_fallback": true
+    },
+    {
+      "sector_key": "global-fr",
+      "display_name": "Cross-sectoriel France",
+      "keywords": [],
+      "url_patterns": [],
+      "benchmark_file": null,
+      "is_fallback_global": true,
+      "warning": "Utilisé uniquement quand aucun secteur ne matche. Préciser dans le rapport que le bench n'est pas spécifique au secteur."
+    }
+  ]
+}

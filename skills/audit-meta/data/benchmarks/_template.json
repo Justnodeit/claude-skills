@@ -1,0 +1,92 @@
+{
+  "sector_key": "<my-sector>",
+  "display_name": "<Nom lisible du secteur>",
+  "geography": "FR",
+  "last_updated": "2026-XX-XX",
+  "version": "1.0",
+
+  "_help": "Modèle pour créer un benchmark sectoriel. Sources requises : Meta, Statista, WordStream, Hubspot, Tinuiti, ou agences référencées. Toutes les sources doivent être datées < 24 mois.",
+
+  "metrics": [
+    {
+      "key": "cpm",
+      "label": "CPM",
+      "unit": "€",
+      "median": 0,
+      "p25": 0,
+      "p75": 0,
+      "source": "Source A, rapport YYYY",
+      "source_url": "https://...",
+      "source_date": "YYYY-MM",
+      "sample_size": "X advertisers FR <secteur>",
+      "reliability": "high",
+      "notes": ""
+    },
+    {
+      "key": "ctr",
+      "label": "CTR",
+      "unit": "%",
+      "median": 0,
+      "p25": 0,
+      "p75": 0,
+      "source": "",
+      "source_url": "",
+      "source_date": "",
+      "reliability": "medium"
+    },
+    {
+      "key": "cpc",
+      "label": "CPC",
+      "unit": "€",
+      "median": 0,
+      "p25": 0,
+      "p75": 0,
+      "source": "",
+      "source_url": "",
+      "source_date": "",
+      "reliability": "medium"
+    },
+    {
+      "key": "frequency",
+      "label": "Fréquence (7j)",
+      "unit": "",
+      "median": 0,
+      "p25": 0,
+      "p75": 0,
+      "source": "",
+      "source_url": "",
+      "source_date": "",
+      "reliability": "medium"
+    },
+    {
+      "key": "cvr",
+      "label": "Conversion rate",
+      "unit": "%",
+      "median": 0,
+      "p25": 0,
+      "p75": 0,
+      "source": "",
+      "source_url": "",
+      "source_date": "",
+      "reliability": "medium"
+    },
+    {
+      "_help": "Si une métrique n'a aucune source publique fiable, garder reliability: 'none' et fournir une note explicite. Ne JAMAIS inventer des chiffres.",
+      "key": "thumbstop_ratio",
+      "label": "Thumbstop ratio (vidéo)",
+      "reliability": "none",
+      "note": "Pas de source publique fiable pour ce secteur. Bench non disponible."
+    }
+  ],
+
+  "context_notes": [
+    "Toute spécificité notable du secteur à connaître avant de comparer (ex. saisonnalité forte au Q4, événements ponctuels, réglementation, etc.)"
+  ],
+
+  "validation_checklist": [
+    "Chaque métrique a-t-elle une source < 24 mois ?",
+    "Les médianes sont-elles cohérentes (médiane > p25, < p75) ?",
+    "Les unités sont-elles homogènes (€, %, ratio) ?",
+    "Le sample_size est-il documenté pour les sources 'high' reliability ?"
+  ]
+}

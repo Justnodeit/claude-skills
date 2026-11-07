@@ -1,0 +1,31 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~
+
+# Node (au cas où on ajouterait des scripts JS plus tard)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build artifacts
+dist/
+build/
+*.log
+
+# Generated client reports (chaque audit produit sort dans examples/<client-slug>/,
+# on conserve uniquement la démo fictive dans le repo public)
+examples/*/
+!examples/maison-verde-demo/
+
+# Secrets (jamais committer)
+.env
+.env.local
+*.pem
+*.key
+config.local.json

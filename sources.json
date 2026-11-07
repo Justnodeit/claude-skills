@@ -1,0 +1,56 @@
+{
+  "agent-ia-whatsapp-skill": {
+    "folder": "agent-ia-whatsapp",
+    "title": "Skill Claude : agent IA WhatsApp",
+    "summary": "Le skill Claude qui construit votre agent IA WhatsApp : Twilio, n8n ou Make, votre CRM, AI Act inclus.",
+    "url": "https://cdn.prod.website-files.com/69d557e7a9418ef55912a9ab/6addf92e9e0675b53c4c3863_6addf90d47a080cf1b084f0f_agent-ia-whatsapp-skill-v1.2.zip"
+  },
+  "montage-video-motion-skill": {
+    "folder": "montage-video-motion",
+    "title": "Skill Claude : montage vidéo motion",
+    "summary": "Le skill Claude qui monte vos vidéos motion : Reels, Shorts, LinkedIn, sous-titres au mot, rendu contrôlé image par image.",
+    "url": "https://cdn.prod.website-files.com/69d557e7a9418ef55912a9ab/6ae9af005e52623b5cf9001d_6ae9aed1958917bcac7b6231_montage-video-motion-skill-v1.0.zip"
+  },
+  "mcp-meta-audit": {
+    "folder": "audit-meta",
+    "title": "Skill Claude : audit Meta Ads via MCP",
+    "summary": "Le skill Claude pour auditer un compte Meta Ads via MCP : tracking, structure, audiences, créas et budget en quelques minutes.",
+    "url": "https://cdn.prod.website-files.com/69d557e7a9418ef55912a9ab/6a0cc465509beb6f482f6878_audit-meta.zip"
+  },
+  "mcp-datagouv-open-data-claude": {
+    "folder": "datagouv-apis",
+    "title": "MCP data.gouv.fr : open data public dans Claude Code",
+    "summary": "Connectez Claude Code à plus de 70 000 jeux de données publics de l'État via MCP : SIREN, INSEE, marchés publics, données géo à jour.",
+    "url": "https://cdn.prod.website-files.com/69d557e7a9418ef55912a9ab/6a14bd30b10746dd5faed1e4_datagouv-skill-main.zip"
+  },
+  "seo-geo-expert-skill-md": {
+    "folder": "seo-geo-expert",
+    "title": "Skill Claude : expert SEO et GEO",
+    "summary": "Le skill Claude pour le SEO et le GEO : optimiser pour Google et les moteurs IA comme ChatGPT et Perplexity.",
+    "url": "https://cdn.prod.website-files.com/69d557e7a9418ef55912a9ab/69e3661eac386aaf10579268_SEO-GEO-expert.md.zip"
+  },
+  "media-buyer-expert-automation-md": {
+    "folder": "media-buying-expert",
+    "title": "Skill Claude : expert media buying",
+    "summary": "Le skill Claude pour le media buying : audit de compte, structure de campagne, tracking et optimisation sur Meta, Google et TikTok.",
+    "url": "https://cdn.prod.website-files.com/69d557e7a9418ef55912a9ab/69e365e8bf0888b05d247835_media-buyer-traffic-manager-expert.md.zip"
+  },
+  "social-media-expert-skill-md": {
+    "folder": "reseaux-sociaux-expert",
+    "title": "Skill Claude : expert réseaux sociaux",
+    "summary": "Le skill Claude pour créer des posts LinkedIn, Reels et carrousels Instagram qui engagent : stratégie éditoriale, hooks et CTA inclus.",
+    "url": "https://cdn.prod.website-files.com/69d557e7a9418ef55912a9ab/69e103bcce6873ef2cdd9624_social-media-expert-skill.md.zip"
+  },
+  "figma-expert-skill-md": {
+    "folder": "figma-expert",
+    "title": "Skill Claude : expert Figma",
+    "summary": "Le skill Claude pour concevoir dans Figma : composants, auto-layout, design tokens et prototypes livrés directement depuis vos prompts.",
+    "url": "https://cdn.prod.website-files.com/69d557e7a9418ef55912a9ab/69e1022ecf0ea488fe13e456_figma-expert-skill.md.zip"
+  },
+  "web-developer-expert-skill-md": {
+    "folder": "webflow-expert",
+    "title": "Skill Claude : expert Webflow",
+    "summary": "La compétence Claude AI qu'il manque à votre projet pour commencer à construire et gérer un site web avec Webflow, sans les mains.",
+    "url": "https://cdn.prod.website-files.com/69d557e7a9418ef55912a9ab/69e100c8b3412d60f0a7e367_webflow-expert-skill.md.zip"
+  }
+}

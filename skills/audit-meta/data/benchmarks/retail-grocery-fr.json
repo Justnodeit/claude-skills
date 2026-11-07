@@ -1,0 +1,92 @@
+{
+  "sector_key": "retail-grocery-fr",
+  "display_name": "Retail / Épicerie (FR)",
+  "geography": "FR",
+  "last_updated": "2026-05-12",
+  "version": "1.0",
+
+  "metrics": [
+    {
+      "key": "cpm",
+      "label": "CPM",
+      "unit": "€",
+      "median": 6.20,
+      "p25": 4.80,
+      "p75": 8.10,
+      "source": "Meta Business Reports, Retail FY2025",
+      "source_url": "https://business.facebook.com/business/insights",
+      "source_date": "2025-Q4",
+      "sample_size": "1 240 advertisers FR retail",
+      "reliability": "high"
+    },
+    {
+      "key": "ctr",
+      "label": "CTR",
+      "unit": "%",
+      "median": 1.05,
+      "p25": 0.78,
+      "p75": 1.42,
+      "source": "WordStream Industry Benchmarks 2025",
+      "source_url": "https://www.wordstream.com/blog/facebook-advertising-benchmarks",
+      "source_date": "2025-09",
+      "sample_size": "Retail global ~17 000 advertisers",
+      "reliability": "medium"
+    },
+    {
+      "key": "cpc",
+      "label": "CPC",
+      "unit": "€",
+      "median": 0.52,
+      "p25": 0.34,
+      "p75": 0.78,
+      "source": "WordStream Industry Benchmarks 2025",
+      "source_url": "https://www.wordstream.com/blog/facebook-advertising-benchmarks",
+      "source_date": "2025-09",
+      "reliability": "medium"
+    },
+    {
+      "key": "frequency",
+      "label": "Fréquence (7j)",
+      "unit": "",
+      "median": 2.10,
+      "p25": 1.60,
+      "p75": 2.80,
+      "source": "Tinuiti Q4 2025 Paid Social Report",
+      "source_url": "https://tinuiti.com/blog/paid-social/",
+      "source_date": "2025-Q4",
+      "reliability": "medium"
+    },
+    {
+      "key": "cvr",
+      "label": "Conversion rate",
+      "unit": "%",
+      "median": 1.85,
+      "p25": 1.20,
+      "p75": 2.65,
+      "source": "Hubspot Marketing Benchmarks 2025",
+      "source_url": "https://www.hubspot.com/marketing-statistics",
+      "source_date": "2025-10",
+      "reliability": "medium"
+    },
+    {
+      "key": "thumbstop_ratio",
+      "label": "Thumbstop ratio (vidéo)",
+      "reliability": "none",
+      "note": "Aucune source publique fiable sur le thumbstop par secteur en 2026. Bench interne Node it (12 comptes retail FR audités sur 2024-2025) : 0,15 médian, 0,21 top quartile. À interpréter avec prudence : bench non statistiquement représentatif."
+    }
+  ],
+
+  "context_notes": [
+    "Saisonnalité forte : Q4 (Noël) et Q2 (printemps/grillades) : comparer toujours à la même période N-1.",
+    "Inflation alimentaire 2024-2025 a tiré le CPM à la hausse mais les budgets ont suivi.",
+    "Marché dominé par 5 enseignes nationales (Carrefour, Leclerc, Intermarché, Auchan, Système U) → benchmark peut être tiré par les leaders.",
+    "Format Reel a explosé sur grocery en 2024-2025 (recettes courtes, food hacks). Donne des CTR > 2% facilement."
+  ],
+
+  "sources_priority_order": [
+    "Meta Business Reports",
+    "WordStream Industry Benchmarks",
+    "Tinuiti Paid Social Report",
+    "Hubspot Marketing Benchmarks"
+  ]
+}

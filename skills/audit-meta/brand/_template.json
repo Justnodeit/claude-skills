@@ -1,0 +1,65 @@
+{
+  "_help": "⚙️ Modèle pour créer un theme client white-label. Modifier uniquement les valeurs marquées ⚙️.",
+  "name": "Acme Corp",
+  "tagline": "Tagline du client (optionnel)",
+  "website": "https://acme.com",
+  "contact_email": "contact@acme.com",
+  "footer_html": "Rapport généré pour <strong>Acme Corp</strong>",
+
+  "logo": {
+    "file": "logos/acme.svg",
+    "_help_logo": "⚙️ Placer le logo dans brand/logos/<name>.svg (SVG vectoriel, viewBox 0 0 32 32 recommandé, fill=\"currentColor\" pour s'adapter au theme)",
+    "width": 32,
+    "height": 32
+  },
+
+  "colors": {
+    "_help": "⚙️ 6 couleurs primaires à adapter. severity et dataviz peuvent rester par défaut.",
+    "primary": "#XXXXXX",
+    "primary-dark": "#XXXXXX",
+    "primary-soft": "#XXXXXX",
+    "accent": "#XXXXXX",
+    "bg": "#FFFFFF",
+    "surface": "#FAFAFB",
+    "surface-2": "#F4F4F7",
+    "border": "#E5E7EB",
+    "text": "#0F172A",
+    "text-muted": "#64748B",
+    "text-on-primary": "#FFFFFF",
+
+    "dataviz": {
+      "_help": "Garder par défaut sauf besoin d'aligner sur la charte data du client.",
+      "series-1": "#5B5FEF",
+      "series-2": "#10B981",
+      "series-3": "#F59E0B",
+      "series-4": "#EC4899",
+      "series-5": "#8B5CF6",
+      "series-6": "#06B6D4",
+      "series-7": "#EF4444"
+    },
+
+    "severity": {
+      "_help": "Ne pas modifier sauf raison forte : sens universel (rouge = critique).",
+      "sev-info": "#06B6D4",
+      "sev-medium": "#F59E0B",
+      "sev-high": "#EF4444",
+      "sev-critical": "#B91C1C",
+      "sev-success": "#10B981"
+    }
+  },
+
+  "typography": {
+    "_help": "⚙️ Si client a une typo brand, l'ajouter. Sinon laisser Inter (gratuit, lisible).",
+    "display": "'Inter Display', 'Inter', system-ui, sans-serif",
+    "body": "'Inter', system-ui, sans-serif",
+    "mono": "'JetBrains Mono', monospace",
+    "pdf_font": "helvetica",
+    "pptx_font": "Inter"
+  },
+
+  "radius": {
+    "sm": "6px",
+    "md": "12px",
+    "lg": "20px"
+  }
+}

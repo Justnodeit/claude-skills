@@ -1,0 +1,37 @@
+name: Synchronisation depuis nodeit.fr
+
+on:
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-site
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Importer les skills nouveaux ou mis à jour
+        env:
+          WEBFLOW_TOKEN: ${{ secrets.WEBFLOW_TOKEN }}
+        run: python scripts/sync_from_webflow.py
+      - name: Publier les changements
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "node-it-bot"
+            git config user.email "hello@nodeit.fr"
+            git add -A
+            git commit -m "Synchronisation des skills depuis nodeit.fr"
+            git push
+          else
+            echo "Aucun changement."
+          fi

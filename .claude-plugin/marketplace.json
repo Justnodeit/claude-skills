@@ -1,0 +1,30 @@
+{
+  "name": "node-it",
+  "owner": {
+    "name": "Node it",
+    "email": "hello@nodeit.fr"
+  },
+  "metadata": {
+    "description": "Skills Claude gratuits de Node it, organisme de formation en IA certifié Qualiopi : agents IA, automatisation, marketing digital, publicité, SEO et GEO, design, vidéo.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "node-it-skills",
+      "description": "Les skills Claude offerts par Node it sur nodeit.fr, en français.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/agent-ia-whatsapp",
+        "./skills/audit-meta",
+        "./skills/datagouv-apis",
+        "./skills/figma-expert",
+        "./skills/media-buying-expert",
+        "./skills/montage-video-motion",
+        "./skills/reseaux-sociaux-expert",
+        "./skills/seo-geo-expert",
+        "./skills/webflow-expert"
+      ]
+    }
+  ]
+}
